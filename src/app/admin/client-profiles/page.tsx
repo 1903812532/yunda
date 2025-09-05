@@ -6,7 +6,6 @@ import { AdminLayout } from "../../../components/admin-layout"
 import { PageHeader, PageContent } from "@/components/ui/page-layout"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +15,6 @@ import {
 
 export default function ClientProfilesPage() {
   const [language, setLanguage] = useState<"en" | "cn">("en")
-  const [view, setView] = useState<"grid" | "list">("grid")
 
   const text = {
     en: {

@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { CheckCircle2, Calendar, Clock, FileText } from "lucide-react"
+import { Calendar, Clock, FileText } from "lucide-react"
+import { Task } from '@/types'
 import { AdminLayout } from "../../../components/admin-layout"
 import { PageHeader, PageContent } from "@/components/ui/page-layout"
 import { Button } from "@/components/ui/button"
@@ -54,7 +55,7 @@ export default function DailyTasksPage() {
     }
   }
 
-  const tasks = {
+  const tasks: Record<'today' | 'upcoming' | 'completed', Task[]> = {
     today: [
       {
         title: "Review Client Application",
@@ -62,14 +63,14 @@ export default function DailyTasksPage() {
         dueTime: "10:00 AM",
         assignedTo: "Sarah Johnson",
         status: "inProgress"
-      },
+      } as Task,
       {
         title: "Medical Document Verification",
         priority: "medium",
         dueTime: "2:00 PM",
         assignedTo: "Dr. Michael Chen",
         status: "pending"
-      }
+      } as Task
     ],
     upcoming: [
       {
@@ -78,14 +79,14 @@ export default function DailyTasksPage() {
         dueTime: "Tomorrow, 11:00 AM",
         assignedTo: "Emily Davis",
         status: "scheduled"
-      },
+      } as Task,
       {
         title: "Contract Review",
         priority: "medium",
         dueTime: "Sep 6, 3:00 PM",
         assignedTo: "Legal Team",
         status: "scheduled"
-      }
+      } as Task
     ],
     completed: [
       {
@@ -94,14 +95,14 @@ export default function DailyTasksPage() {
         completedTime: "Today, 9:00 AM",
         assignedTo: "Security Team",
         status: "done"
-      },
+      } as Task,
       {
         title: "Initial Consultation",
         priority: "medium",
         completedTime: "Yesterday, 4:00 PM",
         assignedTo: "Sarah Johnson",
         status: "done"
-      }
+      } as Task
     ]
   }
 
@@ -133,7 +134,7 @@ export default function DailyTasksPage() {
     }
   }
 
-  const TaskCard = ({ task, type }: { task: any, type: 'today' | 'upcoming' | 'completed' }) => (
+const TaskCard = ({ task, type }: { task: Task, type: 'today' | 'upcoming' | 'completed' }) => (
     <div className="bg-white rounded-lg border border-sage-200 p-6 mb-4">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-4">

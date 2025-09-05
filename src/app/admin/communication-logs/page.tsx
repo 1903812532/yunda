@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { Phone, MessageCircle, Mail, Upload } from "lucide-react"
+import { AdminLayout } from "../../../components/admin-layout"
+import { PageHeader, PageContent } from "@/components/ui/page-layout"
 
 export default function CommunicationLogsPage() {
   const [language, setLanguage] = useState<"en" | "cn">("en")
@@ -82,9 +84,9 @@ export default function CommunicationLogsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-cream-50">
-      <div className="p-6 md:p-8">
-        <h1 className="text-2xl md:text-3xl font-serif text-sage-800 mb-8">{text[language].title}</h1>
+    <AdminLayout>
+      <PageContent>
+        <PageHeader title={text[language].title} />
 
         <div className="bg-white rounded-lg border border-sage-200 p-6">
           <div className="space-y-6">
@@ -112,7 +114,7 @@ export default function CommunicationLogsPage() {
 
                   <div className="flex items-center gap-4 ml-4">
                     <span className="text-sm text-sage-600">{comm.time}</span>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-sage-200 text-sage-800 rounded-lg hover:bg-sage-250 transition-colors duration-200">
+                    <button className="flex items-center gap-2 px-3 py-1.5 bg-sage-100 text-sage-800 rounded-lg hover:bg-sage-200 transition-colors duration-200 text-sm">
                       <Upload className="w-4 h-4" />
                       {text[language].upload}
                     </button>
@@ -122,7 +124,7 @@ export default function CommunicationLogsPage() {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </PageContent>
+    </AdminLayout>
   )
 }

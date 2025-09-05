@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
       } else {
         setError(language === "EN" ? "Invalid email or password" : "邮箱或密码错误")
       }
-    } catch (err) {
+    } catch {
       setError(language === "EN" ? "Login failed. Please try again." : "登录失败，请重试。")
     } finally {
       setIsLoading(false)

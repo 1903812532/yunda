@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Bell, MessageSquare, FileText, AlertCircle, CheckCircle, Calendar } from "lucide-react"
+import { Bell, MessageSquare, FileText, AlertCircle, Calendar } from "lucide-react"
+import { Notification } from '@/types'
 import { AdminLayout } from "../../../components/admin-layout"
 import { PageHeader, PageContent } from "@/components/ui/page-layout"
 import { Button } from "@/components/ui/button"
@@ -57,7 +58,7 @@ export default function NotificationsPage() {
     }
   }
 
-  const notifications = {
+  const notifications: Record<'today' | 'yesterday' | 'thisWeek', Notification[]> = {
     today: [
       {
         id: 1,
@@ -67,7 +68,7 @@ export default function NotificationsPage() {
         time: "2 hours ago",
         unread: true,
         priority: "high"
-      },
+      } as Notification,
       {
         id: 2,
         type: "document",
@@ -76,7 +77,7 @@ export default function NotificationsPage() {
         time: "4 hours ago",
         unread: true,
         priority: "medium"
-      }
+      } as Notification
     ],
     yesterday: [
       {
@@ -87,7 +88,7 @@ export default function NotificationsPage() {
         time: "1 day ago",
         unread: false,
         priority: "high"
-      }
+      } as Notification
     ],
     thisWeek: [
       {
@@ -98,7 +99,7 @@ export default function NotificationsPage() {
         time: "2 days ago",
         unread: false,
         priority: "medium"
-      },
+      } as Notification,
       {
         id: 5,
         type: "document",
@@ -107,7 +108,7 @@ export default function NotificationsPage() {
         time: "3 days ago",
         unread: false,
         priority: "high"
-      }
+      } as Notification
     ]
   }
 
@@ -126,7 +127,7 @@ export default function NotificationsPage() {
     }
   }
 
-  const NotificationGroup = ({ title, items }: { title: string, items: any[] }) => (
+  const NotificationGroup = ({ title, items }: { title: string, items: Notification[] }) => (
     <div className="mb-8">
       <h3 className="text-sm font-medium text-sage-600 mb-4">
         {text[language][title as keyof typeof text.en]}
